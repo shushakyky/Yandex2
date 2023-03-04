@@ -11,6 +11,7 @@ namespace Asteroids.Model
         private readonly float _maxSpeed = 0.0015f;
         private readonly float _secondsToStop = 1f;
         private readonly float _degreesPerSecond = 180;
+        private int _Health = 3;
 
         public Vector2 Acceleration { get; private set; }
 
@@ -38,6 +39,18 @@ namespace Asteroids.Model
         public void Update(float deltaTime)
         {
             Move(Acceleration);
+        }
+
+        public void Damage()
+        {
+            _Health--;
+            
+            if (_Health < 1)
+            {
+                Destroy();
+            }
+                    
+
         }
 
         private void Move(Vector2 delta)
